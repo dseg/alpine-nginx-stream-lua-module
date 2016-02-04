@@ -1,10 +1,10 @@
-FROM gliderlabs/alpine:3.3
+FROM alpine:3.3
 MAINTAINER Daichi Shinozaki <dsdseg@gmail.com>
 # Based on the excellent Dockerfile by Adrian B. Danieli (https://github.com/sickp/docker-alpine-nginx)
 
 # Sample usage:
 # docker build -t nginx-stream-lua .
-# docker run -p80:80 -p443:443 -v /var/run/cache:/run/cache dseg/alpine-nginx-stream-lua-module
+# docker run -p 80:80 -p 443:443 -v /var/run/cache:/var/run/cache dseg/alpine-nginx-stream-lua-module
 
 ENV NGINX_VERSION=1.9.10
 ENV STREAM_LUA_MODULE_VERSION=master
@@ -65,6 +65,7 @@ RUN \
   make install && \
   sed -i -e 's/#access_log  logs\/access.log  main;/access_log \/dev\/stdout;/' -e 's/#error_log  logs\/error.log  notice;/error_log stderr notice;/' /etc/nginx/nginx.conf && \
   adduser -D nginx && \
+  rm -rf /tmp/* && \  
   apk del makedepends
 
 VOLUME ["/var/cache/nginx"]
