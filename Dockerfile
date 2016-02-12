@@ -2,7 +2,7 @@ FROM alpine:3.3
 MAINTAINER Daichi Shinozaki <dsdseg@gmail.com>
 # Based on excellent Dockerfile by Adrian B. Danieli (https://github.com/sickp/docker-alpine-nginx)
 
-ENV NGINX_VERSION=1.9.10
+ENV NGINX_VERSION=1.9.11
 ENV STREAM_LUA_MODULE_VERSION=master
 ENV STREAM_ECHO_MODULE_VERSION=master
 
