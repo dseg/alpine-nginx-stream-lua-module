@@ -3,7 +3,7 @@ MAINTAINER Daichi Shinozaki <dsdseg@gmail.com>
 # Based on excellent Dockerfile by Adrian B. Danieli (https://github.com/sickp/docker-alpine-nginx)
 
 ENV NGINX_VERSION=1.9.11
-ENV STREAM_LUA_MODULE_VERSION=master
+ENV STREAM_LUA_MODULE_VERSION=0.0.1
 ENV STREAM_ECHO_MODULE_VERSION=master
 
 ENV LUAJIT_LIB=/usr/lib
@@ -14,8 +14,8 @@ RUN \
   apk --no-cache add ca-certificates openssl pcre zlib luajit && \
   cd /tmp && \
   curl -sL http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz | tar xvz && \
-  curl -sL https://github.com/openresty/stream-lua-nginx-module/archive/master.tar.gz | tar xvz && \
-  curl -sL https://github.com/openresty/stream-echo-nginx-module/archive/master.tar.gz | tar xvz && \
+  curl -sL https://github.com/openresty/stream-lua-nginx-module/archive/${STREAM_LUA_MODULE_VERSION}.tar.gz | tar xvz && \
+  curl -sL https://github.com/openresty/stream-echo-nginx-module/archive/${STREAM_ECHO_MODULE_VERSION}.tar.gz | tar xvz && \
   cd /tmp/nginx-${NGINX_VERSION} && \
   ./configure \
     --with-cc-opt="-Wno-error" \
